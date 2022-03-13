@@ -70,17 +70,18 @@ module.exports = {
             .end()
     },
     // 添加代理，解决跨域问题
-    // devServer: {
-    //     https: false,
-    //     hotOnly: false,
-    //     proxy: {
-    //         '/api': {
-    //             target: 'API服务器的地址',
-    //             changeOrigin: true,
-    //             pathRewrite: {
-    //                 '^/api': ''
-    //             }
-    //         }
-    //     }
-    // }
+    devServer: {
+        https: false,
+        // hotOnly: false,  //去掉热更新刷新
+        proxy: {
+            '/api': {
+                // target: 'API服务器的地址',
+                target: 'https://lianghj.top:8888/api/private/v1/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': ''
+                }
+            }
+        }
+    }
 }
