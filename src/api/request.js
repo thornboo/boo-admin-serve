@@ -7,6 +7,15 @@ const service = axios.create({
     timeout: 5000
 })
 
+service.interceptors.request.use(config => {
+        config.headers.Authorization = localStorage.getItem('token')
+        return config
+    },
+    (error) => {
+        return Promise.reject(new Error(error))
+    }
+)
+
 service.interceptors.response.use(response => {
         console.log(response)
         const {data, meta} = response.data
