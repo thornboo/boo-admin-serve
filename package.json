@@ -11,7 +11,7 @@
     "@element-plus/icons-vue": "^1.0.1",
     "axios": "^0.24.0",
     "core-js": "^3.8.3",
-    "element-plus": "^2.0.4",
+    "element-plus": "^2.2.2",
     "vue": "^3.2.13",
     "vue-router": "^4.0.11",
     "vuex": "^4.0.2"
@@ -27,7 +27,7 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "svg-sprite-loader": "^6.0.9",
-    "unplugin-auto-import": "^0.6.1",
+    "unplugin-auto-import": "^0.6.9",
     "unplugin-vue-components": "^0.17.21"
   },
   "eslintConfig": {
