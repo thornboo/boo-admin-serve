@@ -1,15 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <NavigationBar v-if="!$route.meta.showNav"></NavigationBar>
+  <router-view></router-view>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavigationBar from "@/layout/NavigationBar";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    NavigationBar
   }
 }
 </script>
