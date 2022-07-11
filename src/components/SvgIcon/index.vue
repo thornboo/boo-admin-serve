@@ -1,10 +1,12 @@
 <template>
-<svg class='svg-icon' aria-hidden='true'></svg>
-  <use :xlink:href="icon"></use>
+  <svg class='svg-icon' aria-hidden='true'>
+    <use :xlink:href='iconName'></use>
+  </svg>
 </template>
 
 <script setup>
-import { defineProps} from 'vue'
+import { defineProps, computed } from 'vue'
+
 const props = defineProps({
   icon: {
     type: String,
@@ -12,8 +14,17 @@ const props = defineProps({
   }
 })
 
+const iconName = computed(() => {
+  return `#icon-${props.icon}`
+})
 </script>
 
 <style scoped>
-
+.svg-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 </style>

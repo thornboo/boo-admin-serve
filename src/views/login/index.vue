@@ -1,39 +1,74 @@
 <template>
   <div class='login-container'>
-    <el-form :model='form' ref='formRef' class='login-form'>
+    <el-form :model='form' ref='formRef' class='login-form' :rules='rules'>
       <div class='title-container'>
         <h2 class='title'>用户登录</h2>
       </div>
       <el-form-item>
-        <el-icon :size='20' class='svg-container'>
-          <Edit />
-        </el-icon>
-        <img src='src/icons/svg/user.svg' alt=''>
-        <el-input v-model='form.name' />
+        <svg-icon icon='user' class='svg-container'></svg-icon>
+        <el-input v-model='form.name'></el-input>
       </el-form-item>
       <el-form-item>
-        <el-icon :size='20' class='svg-container'>
-          <Edit />
-        </el-icon>
-        <el-input v-model='form.password' />
+        <svg-icon icon='password' class='svg-container'></svg-icon>
+        <el-input v-model='form.password' :type='passwordType'></el-input>
+        <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" @onclick='changeType'></svg-icon>
       </el-form-item>
-      <el-button type='primary' class='login-button'>登 录</el-button>
+      <el-button type='primary' class='login-button' @click='handleLogin'>登 录</el-button>
     </el-form>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { Edit } from '@element-plus/icons-vue'
+import { ref } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
 
 const form = ref({
-  name: '',
-  password: ''
-})
+  name: 'admin',
+  password: '123456'
+});
+
+const formRef = ref(null);
+const handleLogin = () => {
+  formRef.value.validate(async (valid) => {
+    if (valid) {
+      store.dispatch('app/login', form.value);
+    } else {
+      console.log('error submit!!');
+      return false;
+    }
+  });
+};
+
+const passwordType = ref('password');
+const changeType = () => {
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text';
+  } else {
+    passwordType.value = 'password';
+  }
+};
+const rules = ref({
+  username: [
+    {
+      required: true,
+      message: 'Please input Activity name',
+      trigger: 'blur'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      message: 'Please input Activity name',
+      trigger: 'blur'
+    }
+  ]
+});
 </script>
 
 <style lang='scss' scoped>
-$bg: #909399;
+$bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;
 $cursor: #fff;
