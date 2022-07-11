@@ -25,6 +25,7 @@
     "@vue/cli-service": "~5.0.0",
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/eslint-config-prettier": "^6.0.0",
     "commitizen": "^4.2.4",
     "cz-customizable": "^6.3.0",
     "eslint": "^7.32.0",

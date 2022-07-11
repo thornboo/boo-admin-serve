@@ -1,54 +1,54 @@
 <template>
-  <div class='login-container'>
-    <el-form :model='form' ref='formRef' class='login-form' :rules='rules'>
-      <div class='title-container'>
-        <h2 class='title'>用户登录</h2>
+  <div class="login-container">
+    <el-form :model="form" ref="formRef" class="login-form" :rules="rules">
+      <div class="title-container">
+        <h2 class="title">用户登录</h2>
       </div>
       <el-form-item>
-        <svg-icon icon='user' class='svg-container'></svg-icon>
-        <el-input v-model='form.name'></el-input>
+        <svg-icon icon="user" class="svg-container"></svg-icon>
+        <el-input v-model="form.name"></el-input>
       </el-form-item>
       <el-form-item>
-        <svg-icon icon='password' class='svg-container'></svg-icon>
-        <el-input v-model='form.password' :type='passwordType'></el-input>
-        <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" @onclick='changeType'></svg-icon>
+        <svg-icon icon="password" class="svg-container"></svg-icon>
+        <el-input v-model="form.password" :type="passwordType"></el-input>
+        <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" @onclick="changeType"></svg-icon>
       </el-form-item>
-      <el-button type='primary' class='login-button' @click='handleLogin'>登 录</el-button>
+      <el-button type="primary" class="login-button" @click="handleLogin">登 录</el-button>
     </el-form>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useStore } from 'vuex';
+import { ref } from 'vue'
+import { useStore } from 'vuex'
 
-const store = useStore();
+const store = useStore()
 
 const form = ref({
   name: 'admin',
   password: '123456'
-});
+})
 
-const formRef = ref(null);
+const formRef = ref(null)
 const handleLogin = () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
-      store.dispatch('app/login', form.value);
+      store.dispatch('app/login', form.value)
     } else {
-      console.log('error submit!!');
-      return false;
+      console.log('error submit!!')
+      return false
     }
-  });
-};
+  })
+}
 
-const passwordType = ref('password');
+const passwordType = ref('password')
 const changeType = () => {
   if (passwordType.value === 'password') {
-    passwordType.value = 'text';
+    passwordType.value = 'text'
   } else {
-    passwordType.value = 'password';
+    passwordType.value = 'password'
   }
-};
+}
 const rules = ref({
   username: [
     {
@@ -64,10 +64,10 @@ const rules = ref({
       trigger: 'blur'
     }
   ]
-});
+})
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 $bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;
