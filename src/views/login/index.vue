@@ -4,11 +4,11 @@
       <div class="title-container">
         <h2 class="title">用户登录</h2>
       </div>
-      <el-form-item>
+      <el-form-item prop="username">
         <svg-icon icon="user" class="svg-container"></svg-icon>
-        <el-input v-model="form.name"></el-input>
+        <el-input v-model="form.username"></el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item prop="password">
         <svg-icon icon="password" class="svg-container"></svg-icon>
         <el-input v-model="form.password" :type="passwordType"></el-input>
         <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" @onclick="changeType"></svg-icon>
@@ -23,10 +23,26 @@ import { ref } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
-
 const form = ref({
-  name: 'admin',
+  username: 'admin',
   password: '123456'
+})
+
+const rules = ref({
+  username: [
+    {
+      required: true,
+      message: 'Please input Activity name',
+      trigger: 'blur'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      message: 'Please input Activity name',
+      trigger: 'blur'
+    }
+  ]
 })
 
 const formRef = ref(null)
@@ -49,22 +65,6 @@ const changeType = () => {
     passwordType.value = 'password'
   }
 }
-const rules = ref({
-  username: [
-    {
-      required: true,
-      message: 'Please input Activity name',
-      trigger: 'blur'
-    }
-  ],
-  password: [
-    {
-      required: true,
-      message: 'Please input Activity name',
-      trigger: 'blur'
-    }
-  ]
-})
 </script>
 
 <style lang="scss" scoped>
