@@ -4,7 +4,7 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/login/index')
+    component: () => import('../views/login/Login')
   }
 ]
 const router = createRouter({

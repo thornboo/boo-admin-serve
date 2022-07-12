@@ -32,14 +32,14 @@ const rules = ref({
   username: [
     {
       required: true,
-      message: 'Please input Activity name',
+      message: '请输入用户名！',
       trigger: 'blur'
     }
   ],
   password: [
     {
       required: true,
-      message: 'Please input Activity name',
+      message: '请输入密码！',
       trigger: 'blur'
     }
   ]
@@ -51,7 +51,7 @@ const handleLogin = () => {
     if (valid) {
       store.dispatch('app/login', form.value)
     } else {
-      console.log('error submit!!')
+      console.log('提交失败！！！')
       return false
     }
   })
@@ -76,7 +76,7 @@ $cursor: #fff;
 .login-container {
   min-height: 100%;
   width: 100%;
-  background-color: $bg;
+  background-image: url("@/assets/loginBg.jpg");
   overflow: hidden;
 
   .login-form {
