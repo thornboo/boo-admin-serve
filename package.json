@@ -9,9 +9,9 @@
   "private": true,
   "scripts": {
     "bootstrap": "npm install",
-    "serve": "vue-cli-service serve",
+    "serve": "vite preview",
     "dev": "vite",
-    "build": "vue-cli-service build",
+    "build": "vite build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
