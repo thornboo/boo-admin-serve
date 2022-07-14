@@ -11,8 +11,7 @@
     "bootstrap": "npm install",
     "serve": "vite preview",
     "dev": "vite",
-    "build": "vite build",
-    "lint": "vue-cli-service lint"
+    "build": "vite build"
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
