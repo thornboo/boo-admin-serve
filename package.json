@@ -2,7 +2,12 @@
   "name": "vite-admin",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "author": {
+    "name": "thornboo",
+    "email": "zhaozhuang1210@gmail.com",
+    "url": "https://github.com/thornboo"
+  },
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -17,5 +22,10 @@
     "typescript": "^4.6.4",
     "vite": "^3.0.0",
     "vue-tsc": "^0.38.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
   }
 }
